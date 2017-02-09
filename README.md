@@ -4,6 +4,11 @@
 
 ##Changed since fork:
 
+###EDIT(February 9, 2017)
+
+* Updated Spark to 2.1.0 for Hadoop 2.6 
+* Updated Zeppelin to 0.7, which is now installed from binary. 
+
 ###EDIT(June 30, 2016)
 
 * Updated Spark to 1.6.1 for Hadoop 2.6 and Zeppelin to current, bulit from master
