@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 # APACHE ZEPPELIN
-export MAVEN_VERSION=3.3.3
-export MAVEN_HOME=/usr/apache-maven-$MAVEN_VERSION
 
+export ZEPPELIN_VERSION=0.7.0
 export ZEPPELIN_HOME=/usr/zeppelin
 export ZEPPELIN_CONF_DIR=${ZEPPELIN_HOME}/conf
 export ZEPPELIN_NOTEBOOK_DIR=${ZEPPELIN_HOME}/notebook
@@ -14,17 +13,11 @@ apt-get install -y git wget net-tools unzip python npm
 # Fixing Debian/Jessie 8.2 has changed "node" to "nodejs"
 ln -fs /usr/bin/nodejs /usr/bin/node
 
-wget -c "http://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
-tar zxvf apache-maven-$MAVEN_VERSION-bin.tar.gz -C /usr/
-ln -s ${MAVEN_HOME} /usr/maven
-
-git clone https://github.com/apache/incubator-zeppelin.git ${ZEPPELIN_HOME}
-
+mkdir ${ZEPPELIN_HOME}
+wget -c "http://apache.mirrors.spacedump.net/zeppelin/zeppelin-${ZEPPELIN_VERSION}/zeppelin-${ZEPPELIN_VERSION}-bin-all.tgz"
+tar zxvf zeppelin-${ZEPPELIN_VERSION}-bin-all.tgz
+mv zeppelin-${ZEPPELIN_VERSION}-bin-all/* ${ZEPPELIN_HOME}
 cd ${ZEPPELIN_HOME}
-# go to a commit I tested and builds correctly
-
-
-${MAVEN_HOME}/bin/mvn clean package -Pspark-1.6 -Dhadoop.version=2.6.0 -Phadoop-2.6 -DskipTests
 
 cat > ${ZEPPELIN_HOME}/conf/zeppelin-env.sh <<CONF
 export ZEPPELIN_MEM="-Xmx1024m"
