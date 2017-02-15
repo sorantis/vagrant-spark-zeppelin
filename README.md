@@ -27,5 +27,3 @@ This is an installation of Apache Spark and Apache Zeppelin based on Debian [deb
 
 ###Examples Datasets
 There are a few datasets [available here](./data/).
-
-##I'm looking for more datasets, if you want to donate yours please [reach out](https://twitter.com/arjones)
